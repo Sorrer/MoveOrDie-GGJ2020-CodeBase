@@ -75,8 +75,15 @@ public class DeathDriveScorer : MonoBehaviour
 
 
     public GameObject DeathPanel;
+    
+    bool Died = false;
 
     public void Die() {
+        if (Died) {
+            return;
+        }
+
+        Died = true;
         GlobalSounds.Instance.StopMusic();
         GlobalSounds.Instance.PlayDeathSFX();
         CharacterMovement.Instance.enabled = false;
